@@ -17,8 +17,10 @@ const PlaceOrder = () => {
 
   const sendOrder = (orderData) => {
     const message = `
-      New Order:
-      Address:${orderData.address}
+      NEW ORDER
+      Address:${formData.address}, ${formData.city}, ${formData.state}, ${formData.pincode}
+      Contact:${formData.contact}
+      Email:${formData.email}
       Items: ${orderData.items.map((item) => `${item.name} (x${item.quantity})`).join(", ")}
       Total Amount:${orderData.amount}`;
 
@@ -174,10 +176,8 @@ const PlaceOrder = () => {
         <CartTotal />
         <button
           type="submit"
-          // onClick={handleShareClick}
           className="bg-yellow-800 text-white text-sm my-8 px-8 py-4"
         >
-          {/* <a aria-label="Chat on WhatsApp" href="https://wa.me/1XXXXXXXXXX"> <a /> */}
           PLACE ORDER
         </button>
         <p className="text-gray-700">
