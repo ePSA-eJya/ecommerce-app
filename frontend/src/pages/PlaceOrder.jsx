@@ -21,7 +21,7 @@ const PlaceOrder = () => {
       Address:${formData.address}, ${formData.city}, ${formData.state}, ${formData.pincode}
       Contact:${formData.contact}
       Email:${formData.email}
-      Items: ${orderData.items.map((item) => `${item.name} (x${item.quantity})`).join(", ")}
+      Items: ${orderData.items.map((item) => `${item.name} (x${item.quantity}) "${item.size}"`).join(", ")}
       Total Amount:${orderData.amount}`;
 
     const encodedMessage = encodeURIComponent(message);

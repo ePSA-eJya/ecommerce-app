@@ -247,6 +247,23 @@ const Add = ({ token }) => {
               XL
             </p>
           </div>
+          <div
+            onClick={() =>
+              setSizes((prev) =>
+                prev.includes("Free Size")
+                  ? prev.filter((item) => item !== "S")
+                  : [...prev, "Free Size"]
+              )
+            }
+          >
+            <p
+              className={`${
+                sizes.includes("Free Size") ? "bg-pink-100" : "bg-slate-200"
+              } px-3 py-1 cursor-pointer`}
+            >
+              Free Size
+            </p>
+          </div>
         </div>
       </div>
 

@@ -1,19 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/assets";
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency, addToCart } = useContext(ShopContext);
+  const { products, currency, addToCart, navigate } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
+  const [sizeAvailable, setSizeAvailable] = useState(false);
 
   const fetchProductData = async () => {
     products.map((item) => {
       if (item._id === productId) {
         setProductData(item);
+        item.sizes.length > 0 ? setSizeAvailable(true) : "";
         setImage(item.image[0]);
         return null;
       }
@@ -52,26 +53,37 @@ const Product = () => {
               {productData.description}
             </p>
 
-            <div className="flex flex-col gap-4 my-8">
-              <p>Select size</p>
-              <div className="flex gap-2">
-                {productData.sizes.map((item, index) => (
-                  <button
-                    className={`border px-4 py-2 bg-gray-300 ${item == size ? "border-orange-500" : ""}`}
-                    key={index}
-                    onClick={() => setSize(item)}
-                  >
-                    {item}
-                  </button>
-                ))}
+            {sizeAvailable ? (
+              <div className="flex flex-col gap-4 my-8">
+                <p>Select size</p>
+                <div className="flex gap-2">
+                  {productData.sizes.map((item, index) => (
+                    <button
+                      className={`border px-4 py-2 bg-gray-300 ${item == size ? "border-orange-500" : ""}`}
+                      key={index}
+                      onClick={() => setSize(item)}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
 
             <button
-              onClick={() => addToCart(productData._id, size)}
-              className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+              onClick={() => addToCart(productData._id, size, sizeAvailable)}
+              className="bg-yellow-800 text-white text-sm my-8 px-8 py-4 parkinsans-bold"
             >
               Add to Cart
+            </button>
+
+            <button
+              onClick={() => navigate("/cart")}
+              className="bg-yellow-800 text-white text-sm my-8 px-8 py-4 parkinsans-bold mx-2"
+            >
+              Proceed to Cart
             </button>
 
             <hr className="mt-8 sm:w-4/5" />
