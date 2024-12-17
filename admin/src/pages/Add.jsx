@@ -190,7 +190,7 @@ const Add = ({ token }) => {
           >
             <p
               className={`${
-                sizes.includes("S") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("S") ? "bg-yellow-300" : "bg-slate-200"
               } px-3 py-1 cursor-pointer`}
             >
               S
@@ -207,7 +207,7 @@ const Add = ({ token }) => {
           >
             <p
               className={`${
-                sizes.includes("M") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("M") ? "bg-yellow-300" : "bg-slate-200"
               } px-3 py-1 cursor-pointer`}
             >
               M
@@ -224,7 +224,7 @@ const Add = ({ token }) => {
           >
             <p
               className={`${
-                sizes.includes("L") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("L") ? "bg-yellow-300" : "bg-slate-200"
               } px-3 py-1 cursor-pointer`}
             >
               L
@@ -241,7 +241,7 @@ const Add = ({ token }) => {
           >
             <p
               className={`${
-                sizes.includes("XL") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("XL") ? "bg-yellow-300" : "bg-slate-200"
               } px-3 py-1 cursor-pointer`}
             >
               XL
@@ -251,14 +251,14 @@ const Add = ({ token }) => {
             onClick={() =>
               setSizes((prev) =>
                 prev.includes("Free Size")
-                  ? prev.filter((item) => item !== "S")
+                  ? prev.filter((item) => item !== "Free Size")
                   : [...prev, "Free Size"]
               )
             }
           >
             <p
               className={`${
-                sizes.includes("Free Size") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("Free Size") ? "bg-yellow-300" : "bg-slate-200"
               } px-3 py-1 cursor-pointer`}
             >
               Free Size
