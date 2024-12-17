@@ -16,6 +16,7 @@ const Add = ({ token }) => {
   const [category, setCategory] = useState("accessories");
   const [subCategory, setSubCategory] = useState("accessories");
   const [sizes, setSizes] = useState([]);
+  const [customSize, setCustomSize] = useState("");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -263,6 +264,24 @@ const Add = ({ token }) => {
             >
               Free Size
             </p>
+          </div>
+          <input
+            className="w-full max-w-[120px] px-2 py-[2px]"
+            type="text"
+            onChange={(e) => setCustomSize(e.target.value)}
+            placeholder="Custom size"
+          />
+          <div
+            onClick={() =>
+              setSizes((prev) =>
+                prev.includes({ customSize })
+                  ? prev.filter((item) => item !== customSize)
+                  : [...prev, customSize]
+              )
+            }
+            className="w-16 px-4 py-1 mt-4 bg-yellow-800 text-white rounded"
+          >
+            OK
           </div>
         </div>
       </div>
